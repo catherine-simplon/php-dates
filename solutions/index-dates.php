@@ -55,9 +55,9 @@
 		
 		<div class="output">
 			<?php
-				echo date("Y/m/d") . "\n";
-				echo date("y.m.d") . "\n";
-				echo date("d-m-y") . "\n";
+				echo date("Y/m/d") . "<br>";
+				echo date("y.m.d") . "<br>";
+				echo date("d-m-y") . "<br>";
 			?>
 		</div>
 		
@@ -185,13 +185,15 @@
 			<?php
 				$date1 = new DateTime('2022-06-01 02:12:51');
 				$date2 = $date1->diff(new DateTime('2024-05-12 11:10:00'));
-				echo $date2->days.'Total days'."\n";
-				echo $date2->y.' years'."\n";
-				echo $date2->m.' months'."\n";
-				echo $date2->d.' days'."\n";
-				echo $date2->h.' hours'."\n";
-				echo $date2->i.' minutes'."\n";
-				echo $date2->s.' seconds'."\n";
+				echo "<pre>";
+				echo $date2->days . 'total days' . "\n";
+				echo $date2->y . ' years' . "\n";
+				echo $date2->m . ' months' . "\n";
+				echo $date2->d . ' days' . "\n";
+				echo $date2->h . ' hours' . "\n";
+				echo $date2->i . ' minutes' . "\n";
+				echo $date2->s . ' seconds' . "\n";
+				echo '</pre>';
 			?>
 		</div>
 		
@@ -271,12 +273,12 @@
 		<div class="output">
 			<?php
 				$dt = '2024-01-01';
-				echo 'Original date : '.$dt."\n";
+				echo 'Original date : ' . $dt . "<br>";
 				$no_days = 40;
-				$bdate = strtotime("-".$no_days." days", strtotime($dt));
-				$adate = strtotime("+".$no_days." days", strtotime($dt));
-				echo 'Before 40 days : '.date("Y-m-d", $bdate)."\n";
-				echo 'After  40 days : '.date("Y-m-d", $adate)."\n";				
+				$bdate = strtotime("-" . $no_days . " days", strtotime($dt));
+				$adate = strtotime("+" . $no_days . " days", strtotime($dt));
+				echo 'Before 40 days : ' . date("Y-m-d", $bdate) . "<br>";
+				echo 'After  40 days : ' . date("Y-m-d", $adate) . "<br>";				
 			?>
 		</div>
 		
@@ -307,8 +309,8 @@
 				}
 
 				$result = Start_End_Date_of_a_week(12,2024);
-				echo 'Starting date of the week: '. $result[0]."\n";
-				echo 'End date the week: '. $result[1];
+				echo 'Starting date of the week: ' . $result[0] . "<br>";
+				echo 'End date the week: ' . $result[1];
 				
 			?>
 		</div>
@@ -377,7 +379,7 @@
 
 			<i>
 				Sample seconds : 200000<br>
-				Expected output : 2 days, 7 hours, 33 minutes and 20 second*
+				Expected output : 2 days, 7 hours, 33 minutes and 20 second
 			</i>
 		</p>
 		
@@ -401,11 +403,12 @@
 		
 		<div class="output">
 			<?php
-				for ($i = 1; $i <= 6; $i++) {
-					$months[] = date("Y-m%", strtotime( date( 'Y-m-01' )." -$i months"));
-				}
 				echo '<pre>';
-				print_r($months);	
+				for ($i = 1; $i <= 6; $i++) {
+					$month = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
+					print_r($month);	
+					print_r("\n");
+				}
 				echo '</pre>';
 			?>
 		</div>
@@ -418,10 +421,10 @@
 		
 		<div class="output">
 			<?php
-				echo date("M - Y")."\n";
-				echo date("M - Y",strtotime("-1 Months"))."\n";
-				echo date("M - Y",strtotime("-2 Months"))."\n";
-				echo date("M - Y",strtotime("-3 Months"))."\n";				
+				echo date("M - Y") . "<br>";
+				echo date("M - Y", strtotime("-1 Months")) . "<br>";
+				echo date("M - Y", strtotime("-2 Months")) . "<br>";
+				echo date("M - Y", strtotime("-3 Months")) . "<br>";		
 			?>
 		</div>
 		
@@ -460,7 +463,8 @@
 			  
 				// format the date according to your preferences
 				// the 3 params are [ DateTime object, ICU date scheme, string locale ]
-				$dateFormatted = IntlDateFormatter::formatObject($dateTimeObj, "l 'on' F d, Y", 'it_IT' );
+				// See: https://unicode-org.github.io/icu/userguide/format_parse/datetime/#date-field-symbol-table
+				$dateFormatted = IntlDateFormatter::formatObject($dateTimeObj, "EEE 'on' MMM d, Y", 'it_IT' );
 				
 				echo 'Today is ' . ucwords($dateFormatted);
 			?>
@@ -489,7 +493,7 @@
 		
 		<div class="output">
 			<?php
-				echo 'Number of days for the month of '.date('M'). ' is :' .date('t')."\n";
+				echo 'Number of days for the month of '.date('M'). ' is : ' .date('t')."\n";
 			?>
 		</div>
 		
@@ -501,7 +505,7 @@
 		
 		<div class="output">
 			<?php
-				ini_set('date.timezone','America/New_York'); 
+				date_default_timezone_set( 'America/New_York' );
 				echo '<p>'.date("g:i A").'</p>'."\n";
 			?>
 		</div>
