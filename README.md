@@ -5,6 +5,7 @@
 *Expected Format : © 2024 PHP Exercises - Simplon.co*
 
 
+
 **Exercise 2.** Create a simple 'birthday countdown' script, the script will count the number of days between current day and birthday.
 
 
