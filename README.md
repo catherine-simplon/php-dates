@@ -1,7 +1,6 @@
 # PHP Dates
 
 1. Write a PHP script which will display the copyright information in the following format. To get current year you can use the date() function.
-
 *Expected Format : © 2024 PHP Exercises - Simplon.co*
 
 2. Create a simple 'birthday countdown' script, the script will count the number of days between current day and birthday.
